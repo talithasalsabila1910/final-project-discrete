@@ -40,9 +40,6 @@ with st.sidebar:
     if st.button("🗺️  Map Visual"):
         st.switch_page("pages/mapvisual.py")
 
-    if st.button("👥  Team Profile"):
-        st.switch_page("pages/teamprofile.py")
-
     if st.button("📊 Graph Visual"):
         st.switch_page("pages/graphvisual.py")
 
