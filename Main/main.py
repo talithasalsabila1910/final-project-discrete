@@ -4,7 +4,7 @@ import streamlit as st
 # CONFIG
 # ============================
 st.set_page_config(
-    page_title="My Web App",
+    page_title="Our Web App",
     page_icon="🌐",
     layout="wide"
 )
@@ -50,18 +50,51 @@ with st.sidebar:
     if st.button("🗺️  Map Visual"):
         st.switch_page("pages/mapvisual.py")
 
-    if st.button("👥  Team Profile"):
-        st.switch_page("pages/teamprofile.py")
-
     if st.button("📊 Graph Visual"):
         st.switch_page("pages/graphvisual.py")
 
 # ============================
 # PAGE CONTENT
 # ============================
-st.title("Welcome to Our Web App 👋")
-st.write("""
-This is the main homepage.
+st.markdown(
+    """
+    <div style="text-align:center;">
+        <h1>Hello, Welcome To Our Website 👋</h1>
+        <p style="font-size:18px; color:gray;">
+            Meet our amazing team
+        </p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
-Use the sidebar menu to navigate pages manually.
-""")
+team = [
+    {
+        "Name": "Talitha Syakirah Salsabila",
+        "Major": "Actuarial Science",
+        "Photo": "https://github.com/KemalRmadhn/photopython/blob/main/Talitha1.jpg?raw=true",
+        "Task": "Main.py and Mapvisual.py"
+    },
+    {
+        "Name": "Kezia Fransisca H",
+        "Major": "Actuarial Science",
+        "Photo": "https://github.com/KemalRmadhn/photopython/blob/main/Kezia2.jpg?raw=true",
+        "Task": "Presentation Video"
+    },
+    {
+        "Name": "Carissa Isaiah S",
+        "Major": "Actuarial Science",
+        "Photo": "https://github.com/KemalRmadhn/photopython/blob/main/carissa1.jpg?raw=true",
+        "Task": "Graphvisual.py"
+    }
+]
+
+# Kolom kiri & kanan kosong agar konten ke tengah
+left_space, col1, col2, col3, right_space = st.columns([1, 2, 2, 2, 1])
+
+for member, col in zip(team, [col1, col2, col3]):
+    with col:
+        st.image(member["Photo"], width=200)
+        st.markdown(f"**{member['Name']}**")
+        st.caption(member["Major"])
+        st.caption(f"Task : {member['Task']}")
